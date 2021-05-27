@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { BrowserRouter as Router } from "react-router-dom";
+import { handleInitialData } from "./store/shared";
+import Routes from "./components/Routes";
+class App extends Component {
+  componentDidMount() {
+    this.props.handleInitialData();
+  }
+  render() {
+    const { authUser } = this.props;
+    return (
+      <Router>
+        <Fragment>
+          <div className="main-container">
+            <Routes notLoggedIn={authUser} />
+          </div>
+        </Fragment>
+      </Router>
+    );
+  }
+}
+App.propTypes = {
+  handleInitialData: PropTypes.func.isRequired,
+  authUser: PropTypes.bool.isRequired,
+};
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function mapStateToProps({ authUser }) {
+  return {
+    authUser: authUser !== null ? true : false,
+  };
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    handleInitialData: () => {
+      dispatch(handleInitialData());
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
