@@ -2,8 +2,6 @@
 
 This app was built as a project for the Udacity React Nanodegree Program. The purpose of the project is to demonstrate understanding of how Redux works in a React-based web app.
 
-It's built with React, Redux, React Router, & Redux Thunk.
-
 This app is the second of three projects required
 
 ## Technologies used:
@@ -19,7 +17,7 @@ Clone the repository, change directories, and use NPM to install the dependencie
 
 ```bash
 $ git clone https://github.com/ElSakr/would-you-rather.git
-$ cd reactnd-project-would-you-rather
+$ cd would-you-rather
 $ npm install
 ```
 
