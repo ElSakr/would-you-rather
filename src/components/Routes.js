@@ -10,7 +10,8 @@ import QuestionPage from "./QuestionPage";
 import NotFound from "./NotFound";
 import Logout from "./Logout";
 import NavBar from "./NavBar";
-function Routes(props) {
+
+const Routes = (props) => {
   return (
     <div className="container">
       <Switch>
@@ -23,7 +24,7 @@ function Routes(props) {
             <NavBar />
             <Route path="/" exact component={Dashboard} />
             <Route path="/leaderboard" exact component={LeaderBoard} />
-            *<Route path="/add" component={NewQuestion} />}
+            <Route path="/add" component={NewQuestion} />
             <Route path="/questions/:id" component={QuestionPage} />
             <Route exact path="/logout" component={Logout} />
           </Fragment>

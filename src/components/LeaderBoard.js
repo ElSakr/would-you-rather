@@ -1,35 +1,33 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import UserStats from "./User";
 
-class LeaderBoard extends Component {
-  render() {
-    return (
-      <Fragment>
-        <h2 className="text-center my-3">
-          <small>LeaderBoard</small>
-        </h2>
-        {this.props.userIDs.map((id) => (
-          <UserStats key={id} id={id} />
-        ))}
-      </Fragment>
-    );
-  }
+const LeaderBoard = (props) => {
+  const { userIDs } = props
+  return (
+    <>
+      <h2 className="text-center my-3">
+        <span>LeaderBoard</span>
+      </h2>
+      {userIDs.map((id) => (
+        <UserStats key={id} id={id} />
+      ))}
+    </>
+  );
 }
 
-function mapStateToProps({ users }) {
-  //sort UserIDs by the score for each user, desc
-  const sortedUserIDs = Object.keys(users).sort((idA, idB) => {
-    const scoreA =
-      Object.keys(users[idA].answers).length + users[idA].questions.length;
-    const scoreB =
-      Object.keys(users[idB].answers).length + users[idB].questions.length;
+const mapStateToProps = ({ users }) => {
+  const sortedIDs = Object.keys(users).sort((id_1, id_2) => {
+    const score_1 =
+      Object.keys(users[id_1].answers).length + users[id_1].questions.length;
+    const score_2 =
+      Object.keys(users[id_2].answers).length + users[id_2].questions.length;
 
-    return scoreB - scoreA;
+    return score_2 - score_1;
   });
 
   return {
-    userIDs: sortedUserIDs,
+    userIDs: sortedIDs,
   };
 }
 

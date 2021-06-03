@@ -26,7 +26,7 @@ class Question extends React.Component {
               </Link>
             </Card.Body>
             <Card.Footer>
-              <small className="text-muted">{formatDate(timestamp)}</small>
+              <span className="text-muted">{formatDate(timestamp)}</span>
             </Card.Footer>
           </Card>
         </Col>

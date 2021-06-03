@@ -1,74 +1,55 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { connect, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
 import { handleAddQuestion } from "../store/shared";
 
-class NewQuestion extends Component {
-  state = {
-    optionOne: "",
-    optionTwo: "",
-    toHome: false,
+const NewQuestion = () => {
+  const [optionOne, setOptionOne] = useState('')
+  const [optionTwo, setOptionTwo] = useState('')
+  const [goToHome, setGoToHome] = useState(false)
+  const dispatch = useDispatch()
+
+  const OnInputChange = (event, setOption) => {
+    setOption(event.target.value)
   };
 
-  handleInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({
-      [name]: value,
-    });
+  const OnSubmit = (event) => {
+    event.preventDefault();
+    setOptionOne('')
+    setOptionTwo('')
+    setGoToHome(true)
+    setTimeout(() => {
+      dispatch(handleAddQuestion(optionOne, optionTwo))
+    }, 2000);
   };
 
-  handleSubmit = (e) => {
-    const { optionOne, optionTwo } = this.state;
-    const { dispatch } = this.props;
-
-    e.preventDefault();
-
-    this.setState(
-      {
-        optionOne: "",
-        optionTwo: "",
-        toHome: true,
-      },
-      () => dispatch(handleAddQuestion(optionOne, optionTwo))
-    );
-  };
-
-  render() {
-    const { optionOne, optionTwo, toHome } = this.state;
-
-    if (toHome === true) return <Redirect to="/" />;
-
-    return (
-      <Fragment>
-        <h2 className="text-center my-3">
-          <small>Would You Rather...</small>
-        </h2>
+  return (
+    (goToHome === true) ? <Redirect to="/" /> :
+      <>
+        <h2 className="text-center my-3">Would You Rather?</h2>
         <Row className="justify-content-center">
           <Col xs={12} md={6}>
             <Card bg="light" className="m-3 text-center">
               <Card.Body>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={OnSubmit}>
                   <Form.Group controlId="optionOne">
                     <Form.Label>Choice One</Form.Label>
                     <Form.Control
                       type="text"
                       name="optionOne"
                       value={optionOne}
-                      onChange={this.handleInputChange}
+                      onChange={(event) => OnInputChange(event, setOptionOne)}
                     />
                   </Form.Group>
-                  <h3>
-                    <small>OR</small>
-                  </h3>
+                  <h3>OR</h3>
                   <Form.Group controlId="optionTwo">
                     <Form.Label>Choice Two</Form.Label>
                     <Form.Control
                       type="text"
                       name="optionTwo"
                       value={optionTwo}
-                      onChange={this.handleInputChange}
+                      onChange={(event) => OnInputChange(event, setOptionTwo)}
                     />
                   </Form.Group>
                   <Button
@@ -83,9 +64,8 @@ class NewQuestion extends Component {
             </Card>
           </Col>
         </Row>
-      </Fragment>
-    );
-  }
+      </>
+  );
 }
 
 export default connect()(NewQuestion);

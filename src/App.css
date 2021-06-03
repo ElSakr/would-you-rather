@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+/* navbar */
+nav.bg-light {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+}
+nav .navbar-collapse {
+  flex-grow: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+ .card-header {
+  display: flex;
+  align-items: center;
+}
+
+ .card-header img{
+  margin-right: 10px;
+}
+
+.card-footer span{
+  font-size: 13px;
+}
+.custom-control-input {
+  margin-right: 5px;
+}

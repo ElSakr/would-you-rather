@@ -85,7 +85,7 @@ class QuestionDetails extends Component {
                 </ul>
               </Card.Body>
               <Card.Footer>
-                <small className="text-muted">{formatDate(timestamp)}</small>
+                <span className="text-muted">{formatDate(timestamp)}</span>
               </Card.Footer>
             </Card>
           </Col>
@@ -131,7 +131,7 @@ class QuestionDetails extends Component {
                 </Form>
               </Card.Body>
               <Card.Footer>
-                <small className="text-muted">{formatDate(timestamp)}</small>
+                <span className="text-muted">{formatDate(timestamp)}</span>
               </Card.Footer>
             </Card>
           </Col>
@@ -141,7 +141,7 @@ class QuestionDetails extends Component {
   }
 }
 
-function mapStateToProps({ questions, users, authUser }, { id, answered }) {
+const mapStateToProps = ({ questions, users, authUser }, { id, answered }) => {
   const question = questions[id];
   return {
     question: question ? question : null,

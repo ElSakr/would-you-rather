@@ -24,7 +24,7 @@ class Login extends Component {
     const { userNames } = this.props;
     const { errorMsg } = this.state;
     if (Object.keys(userNames).length === 0) {
-      return <h1>Waiting</h1>;
+      return <h1>Loading...</h1>;
     } else {
       return (
         <Row className="justify-content-center align-items-center min-vh-100">
@@ -62,7 +62,7 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+const mapStateToProps = ({ users }) => {
   return {
     userNames: Object.keys(users).map((id) => ({
       value: id,

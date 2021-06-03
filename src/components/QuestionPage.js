@@ -12,17 +12,17 @@ class QuestionPage extends Component {
       return <NotFound />;
     }
     return (
-      <Fragment>
+      <>
         <h2 className="text-center my-3">
-          <small>Would You Rather...</small>
+          <span>Would You Rather...</span>
         </h2>
         <QuestionDetails id={id} answered={answered} />
-      </Fragment>
+      </>
     );
   }
 }
 
-function mapStateToProps({ authUser, users }) {
+const mapStateToProps = ({ authUser, users }) => {
   const autherUserAnsweres = users[authUser].answers;
 
   return {

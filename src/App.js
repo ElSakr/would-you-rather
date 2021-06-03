@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -13,11 +13,9 @@ class App extends Component {
     const { authUser } = this.props;
     return (
       <Router>
-        <Fragment>
-          <div className="main-container">
-            <Routes notLoggedIn={authUser} />
-          </div>
-        </Fragment>
+        <div className="main-container">
+          <Routes notLoggedIn={authUser} />
+        </div>
       </Router>
     );
   }

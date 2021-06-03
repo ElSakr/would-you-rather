@@ -1,22 +1,20 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import Question from "./Question";
-class QuestionsList extends Component {
-  render() {
-    const { idsList, emptyListNote } = this.props;
+const QuestionsList = (props) => {
+  const { idsList, emptyListNote } = props;
 
-    return (
-      <Fragment>
-        <h2 className="text-center my-3">
-          <small>Would You Rather...</small>
-        </h2>
-        {idsList && idsList.length ? (
-          idsList.map((id) => <Question key={id} id={id} />)
-        ) : (
-          <p className="text-center">{emptyListNote}</p>
-        )}
-      </Fragment>
-    );
-  }
+  return (
+    <>
+      <h2 className="text-center my-3">
+        <span>Would You Rather...</span>
+      </h2>
+      {idsList && idsList.length ? (
+        idsList.map((id) => <Question key={id} id={id} />)
+      ) : (
+        <p className="text-center">{emptyListNote}</p>
+      )}
+    </>
+  );
 }
 
 export default QuestionsList;
