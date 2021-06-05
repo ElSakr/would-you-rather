@@ -4,8 +4,8 @@ import { Redirect } from "react-router-dom";
 import { unAuthUser } from "../store/authuser";
 
 const Logout = () => {
-
   const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(unAuthUser())
   }, [dispatch])

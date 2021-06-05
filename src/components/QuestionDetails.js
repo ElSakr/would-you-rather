@@ -5,11 +5,11 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { formatDate } from "../utils/helper";
 import { handleAnswer } from "../store/shared";
 import NotFound from "./NotFound";
-import Avatar from "./Avatar";
+import AvatarPlaceholder from "./Avatar";
 
 class QuestionDetails extends Component {
   state = {
-    errorMsg: "",
+    errorHint: "",
   };
   handleSubmit = (id, e) => {
     const answer = this.form.answer.value;
@@ -19,15 +19,11 @@ class QuestionDetails extends Component {
     if (answer !== "") {
       dispatch(handleAnswer(id, answer));
     } else {
-      this.setState({ errorMsg: "You must make a choice" });
+      this.setState({ errorHint: "You must make a choice!" });
     }
   };
   render() {
     const { question, author, authedUser, answered, authUser } = this.props;
-    if (question === null || authUser === null) {
-      return <NotFound />;
-    }
-
     const { optionOne, optionTwo, timestamp, id } = question;
     const { name, avatarURL } = author;
     const totalVotes = optionOne.votes.length + optionTwo.votes.length;
@@ -37,14 +33,19 @@ class QuestionDetails extends Component {
     const optionTwoPercent = Math.round(
       (optionTwo.votes.length / totalVotes) * 100
     );
-    const { errorMsg } = this.state;
+    const { errorHint } = this.state;
+
+    if (question === null || authUser === null) {
+      return <NotFound />;
+    }
+
     if (answered) {
       return (
         <Row className="justify-content-center">
           <Col xs={12} md={6}>
             <Card bg="light" className="m-3">
               <Card.Header>
-                <Avatar avatarURL={avatarURL} className="mr-2" />
+                <AvatarPlaceholder avatarURL={avatarURL} className="mr-2" />
                 {name} asks:
               </Card.Header>
 
@@ -97,7 +98,7 @@ class QuestionDetails extends Component {
           <Col xs={12} md={6}>
             <Card bg="light" className="m-3">
               <Card.Header>
-                <Avatar avatarURL={avatarURL} className="mr-2" />
+                <AvatarPlaceholder avatarURL={avatarURL} className="mr-2" />
                 {name} asks:
               </Card.Header>
 
@@ -106,7 +107,7 @@ class QuestionDetails extends Component {
                   onSubmit={(e) => this.handleSubmit(id, e)}
                   ref={(f) => (this.form = f)}
                 >
-                  {errorMsg ? <p className="text-danger">{errorMsg}</p> : null}
+                  {errorHint ? <p className="text-danger">{errorHint}</p> : null}
                   <Form.Check
                     custom
                     type="radio"

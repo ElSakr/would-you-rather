@@ -38,7 +38,7 @@
 }
 
 /* navbar */
-nav.bg-light {
+nav.bg-dark {
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Row, Col } from "react-bootstrap";
-import Avatar from "./Avatar";
+import AvatarPlaceholder from "./Avatar";
 
 class User extends Component {
   render() {
@@ -13,7 +13,7 @@ class User extends Component {
         <Col xs={12} md={6}>
           <Card bg="light" className="m-3">
             <Card.Header>
-              <Avatar avatarURL={avatarURL} className="mr-2" />
+              <AvatarPlaceholder avatarURL={avatarURL} className="mr-2" />
               {name}
             </Card.Header>
             <Card.Body className="d-flex justify-content-center">

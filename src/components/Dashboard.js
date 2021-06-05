@@ -9,16 +9,16 @@ const Dashboard = (props) => {
   return (
     <>
       <Tabs>
-        <Tab eventKey="unanswered" title="Unanswered Questions">
+        <Tab eventKey="unanswered" title="Unanswered Questions List">
           <QuestionsList
             idsList={unansweredQuestionIds}
-            emptyListNote="No more Unswered Questions!"
+            emptyMsg="No more Unswered Questions!"
           />
         </Tab>
-        <Tab eventKey="answered" title="Answered Questions">
+        <Tab eventKey="answered" title="Answered Questions List">
           <QuestionsList
             idsList={answeredQuestionIds}
-            emptyListNote="No Answered Questions yet"
+            emptyMsg="No Answered Questions yet"
           />
         </Tab>
       </Tabs>
@@ -28,7 +28,6 @@ const Dashboard = (props) => {
 
 const mapStateToProps = ({ authUser, questions, users }) => {
   const user = users[authUser];
-
   const answeredQuestions = Object.keys(user.answers).sort(
     (a, b) => questions[b].timestamp - questions[a].timestamp
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "react-bootstrap/Image";
 
-const Avatar = ({ avatarURL, className }) => {
+const AvatarPlaceholder = ({ avatarURL, className }) => {
   return (
     <Image
       src={avatarURL}
@@ -15,4 +15,4 @@ const Avatar = ({ avatarURL, className }) => {
   );
 }
 
-export default Avatar;
+export default AvatarPlaceholder;

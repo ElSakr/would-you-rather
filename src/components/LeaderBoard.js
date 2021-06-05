@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import UserStats from "./User";
 
-const LeaderBoard = (props) => {
+const LeaderBoardView = (props) => {
   const { userIDs } = props
   return (
     <>
       <h2 className="text-center my-3">
-        <span>LeaderBoard</span>
+        <span>Leader Board List</span>
       </h2>
       {userIDs.map((id) => (
         <UserStats key={id} id={id} />
@@ -31,4 +31,4 @@ const mapStateToProps = ({ users }) => {
   };
 }
 
-export default connect(mapStateToProps)(LeaderBoard);
+export default connect(mapStateToProps)(LeaderBoardView);

@@ -57,7 +57,7 @@ const NewQuestion = () => {
                     variant="outline-dark"
                     disabled={optionOne === "" || optionTwo === ""}
                   >
-                    Submit
+                    Add
                   </Button>
                 </Form>
               </Card.Body>

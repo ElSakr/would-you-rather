@@ -10,11 +10,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} 
 .main-container {
   margin-top: 3px;
 }
 
+.main-container .card-header {
+  background: #000;
+    color: #dedcdc;
+}
 .container {
   max-width: 1000px;
   margin: 0 auto;
