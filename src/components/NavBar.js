@@ -17,16 +17,16 @@ const NavBar = ({ user }) => {
           <Nav.Link as={NavLink} to="/" exact>
             Home
             </Nav.Link>
-          <Nav.Link as={NavLink} to="/add">
-            New Question
-            </Nav.Link>
           <Nav.Link as={NavLink} to="/leaderboard">
             Leader board
             </Nav.Link>
+          <Nav.Link as={NavLink} to="/add">
+            New Question
+            </Nav.Link>
         </Nav>
         <Nav className="align-items-start">
-          <Navbar.Text>{user?.name}</Navbar.Text>
           <AvatarPlaceholder avatarURL={user?.avatarURL} className="mx-3" />
+          <Navbar.Text>{user?.name}</Navbar.Text>
           <Nav.Link as={NavLink} to="/logout">
             Logout
             </Nav.Link>

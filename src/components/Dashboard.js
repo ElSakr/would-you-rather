@@ -27,6 +27,7 @@ const Dashboard = (props) => {
 }
 
 const mapStateToProps = ({ authUser, questions, users }) => {
+
   const user = users[authUser];
   const answeredQuestions = Object.keys(user.answers).sort(
     (a, b) => questions[b].timestamp - questions[a].timestamp

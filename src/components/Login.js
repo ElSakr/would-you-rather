@@ -14,7 +14,7 @@ class Login extends Component {
     const { dispatch } = this.props;
     userID !== "" ?
       dispatch(authUser(userID)) :
-      this.setState({ errorHint: "You must choose a username" })
+      this.setState({ errorHint: "You must choose a username!" })
   };
 
   render() {

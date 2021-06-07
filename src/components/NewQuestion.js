@@ -34,7 +34,7 @@ const NewQuestion = () => {
               <Card.Body>
                 <Form onSubmit={OnSubmit}>
                   <Form.Group controlId="optionOne">
-                    <Form.Label>Choice One</Form.Label>
+                    <Form.Label>Option One</Form.Label>
                     <Form.Control
                       type="text"
                       name="optionOne"
@@ -44,7 +44,7 @@ const NewQuestion = () => {
                   </Form.Group>
                   <h3>OR</h3>
                   <Form.Group controlId="optionTwo">
-                    <Form.Label>Choice Two</Form.Label>
+                    <Form.Label>Option Two</Form.Label>
                     <Form.Control
                       type="text"
                       name="optionTwo"

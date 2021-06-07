@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router } from "react-router-dom";
 import { handleInitialData } from "./store/shared";
 import Routes from "./components/Routes";
+
 class App extends Component {
   componentDidMount() {
     this.props.handleInitialData();
@@ -25,13 +26,13 @@ App.propTypes = {
   authUser: PropTypes.bool.isRequired,
 };
 
-function mapStateToProps({ authUser }) {
+const mapStateToProps = ({ authUser }) => {
   return {
     authUser: authUser !== null ? true : false,
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleInitialData: () => {
       dispatch(handleInitialData());

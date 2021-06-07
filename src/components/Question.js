@@ -16,10 +16,10 @@ const Question = ({ question, author }) => {
         <Card bg="light" className="m-3">
           <Card.Header>
             <AvatarPlaceholder avatarURL={avatarURL} className="mr-2" />
-            {name} asks:
+            {name} is asks:
             </Card.Header>
           <Card.Body className="text-center">
-            <Card.Text>{optionOne.text.slice(0, 50)}...?</Card.Text>
+            <Card.Text>{optionOne.text.slice(0, 40)}..?</Card.Text>
             <Link to={`/questions/${id}`}>
               <Button variant="outline-dark">View</Button>
             </Link>
